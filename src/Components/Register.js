@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from "axios"
 
 const Register = () => {
     const [userData, setUserData] = useState({
@@ -16,6 +17,18 @@ const Register = () => {
             ...userData,
             [name]: value
         })
+    }
+
+    const registerHandle = () => {
+        const { userName, email, password, confirmPassword } = userData
+        if (userName && email && password && (password === confirmPassword)) {
+            axios.post("http://localhost:8000/register", userData)
+                .then(res => console.log(res))
+        }
+        else {
+            alert("invalid inputs")
+        }
+
     }
     console.log(userData)
     return (
@@ -41,7 +54,7 @@ const Register = () => {
                     <input className='pass' type="password" placeholder='Enter your password' value={userData.confirmPassword} name='confirmPassword' onChange={handleChange} />
                 </div>
                 <div className="btn-container">
-                    <button className='submit'>Register</button>
+                    <button className='submit' onClick={registerHandle}>Register</button>
                     <span>or</span>
                     <button className='submit'>Login</button>
                 </div>
