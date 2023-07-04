@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from "axios"
 
 const Register = () => {
+    
     const [userData, setUserData] = useState({
         userName: "",
         email: "",
@@ -10,6 +11,7 @@ const Register = () => {
         confirmPassword: "",
 
     })
+    
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;

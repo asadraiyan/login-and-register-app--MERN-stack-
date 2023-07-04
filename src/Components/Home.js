@@ -5,6 +5,7 @@ const Home = () => {
         <div>
             <h2>This is home page</h2>
             <button>Log out</button>
+        
         </div>
     )
 }
